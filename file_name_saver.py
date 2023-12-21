@@ -36,15 +36,16 @@ def list_files_to_excel():
     # Set the column header
     sheet['A1'] = "File Names"
 
-    # Get a list of all files in the folder
-    file_names = os.listdir(folder_path)
-
-    # Write file names to the Excel sheet
-    for index, file_name in enumerate(file_names, start=2):
-        sheet.cell(row=index, column=1, value=file_name)
+    # Using os.walk to get all file names and subfolder names
+    folder_path = "/home/exmachina/dev/file_name_saver/test_folder"
+    for folder_path, subfolders, file_names in os.walk(folder_path):
+        main_dir = [os.path.basename(folder_path)]
+        file_names.sort()
+        for file_name in main_dir + file_names:
+            sheet.append([file_name])
 
     # Save the Excel file
-    #excel_file_path = os.path.join(folder_path, excel_file_name)
+    # excel_file_path = os.path.join(folder_path, excel_file_name)
     workbook.save(excel_file_path)
 
     # Close the workbook
