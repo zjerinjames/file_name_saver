@@ -1,0 +1,2 @@
+- installed python for testing:  if not needed delte it from the env
+- delete test.py test_folder_exp.py once done
