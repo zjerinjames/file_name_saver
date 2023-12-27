@@ -43,10 +43,7 @@ def list_files_to_excel():
     for folder_path, subfolders, file_names in os.walk(folder_path):
         main_dir = [os.path.basename(folder_path)]
         file_names.sort()
-        print(file_names)
         for i, file_name in enumerate(file_names):
-            # print(i, ' ', file_name)
-            print(file_names[i])
             file_names[i] = file_rename(file_name)
             file_names[i]
         for file_name in main_dir + file_names:
